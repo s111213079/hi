@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BabylonJS Viewer</title>
+    <title>Babylon Viewer Select</title>
 
     <style>
         .viewerContainer {
@@ -20,6 +20,8 @@
                 let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
                 if (viewer) {
                     viewer.loadModel({ url: modelUrl });
+                } else {
+                    console.log("viewer 尚未初始化");
                 }
             }
         }
@@ -36,9 +38,9 @@
 </select>
 
 <div class="viewerContainer">
-    <!-- ✅ 建議給預設模型 -->
     <babylon id="viewerID" model="./models/test2.0.glb"></babylon>
 </div>
 
 </body>
 </html>
+``
