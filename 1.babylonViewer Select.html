@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>BabylonJS Viewer - Basic usage</title>
-        <style>
-			.viewerContainer {
-                width: 400px;
-                height: 500px;				
-				image-rendering: pixelated; /* to prevent blury when zoomed out */
-			}
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>BabylonJS Viewer</title>
 
-        </style>
-		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
-	<script>
-		function loadit(modelUrl) {
-			if(modelUrl) {
-				let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-				viewer.loadModel(modelUrl)
-			}
-		}
-	</script>
+    <style>
+        .viewerContainer {
+            width: 400px;
+            height: 500px;
+            image-rendering: pixelated;
+        }
+    </style>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+
+    <script>
+        function loadit(modelUrl) {
+            if (modelUrl) {
+                let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
+                if (viewer) {
+                    viewer.loadModel({ url: modelUrl });
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-<select onchange="loadit(this.value)">
-	<option value="">select model</option>
-	<option value="./models/test 2.0.glb">test 2.0</option>
-	<option value="./models/Astronaut.glb">Astronaut</option>
-	<option value="./models/stacy_lightweight.glb">Stacy</option>
-</select>
-<div class='viewerContainer'>
-	<babylon id="viewerID"></babylon>
-</div>
-</body>
 
+<body>
+
+<select onchange="loadit(this.value)">
+    <option value="">select model</option>
+    <option value="./models/test2.0.glb">test2.0</option>
+    <option value="./models/Astronaut.glb">Astronaut</option>
+    <option value="./models/stacy_lightweight.glb">Stacy</option>
+</select>
+
+<div class="viewerContainer">
+    <!-- ✅ 建議給預設模型 -->
+    <babylon id="viewerID" model="./models/test2.0.glb"></babylon>
+</div>
+
+</body>
 </html>
